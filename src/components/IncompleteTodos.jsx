@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 export const IncompleteTodos = (props) => {
   const { todos, onClickComplete, onClickDelete } = props;
   return (
