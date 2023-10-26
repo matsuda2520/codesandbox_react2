@@ -1,10 +1,10 @@
 export const CompleteTodos = (props) => {
-  const { todoText, onChange, onClickBack } = props;
+  const { todos, onClickBack } = props;
   return (
     <div className="complete-area">
       <p className="title">完了のTODO</p>
       <ul className="">
-        {completeTodos.map((todo, index) => {
+        {todos.map((todo, index) => {
           return (
             // 一番外の要素にkeyをつける
             <div key={todo} className="list-row">
