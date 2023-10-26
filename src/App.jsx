@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { InputTodo } from "./components/InputTodo";
+import { IncompleteTodos } from "./components/IncompleteTodos";
 import "./styles.css";
 
 export const App = () => {
@@ -44,50 +46,18 @@ export const App = () => {
 
   return (
     <>
-      <div className="input-area">
-        <input
-          placeholder="TODOを入力"
-          value={todoText}
-          onChange={onChangeTodoText}
-        />
-        <button onClick={onClickAdd}>追加</button>
-      </div>
-      <div className="incomplete-area">
-        <p className="title">未完了のTODO</p>
-        <ul className="">
-          {incompleteTodos.map((todo, index) => {
-            return (
-              // 一番外の要素にkeyをつける
-              <div key={todo} className="list-row">
-                <li className="">{todo}</li>
-                <button className="" onClick={() => onClickComplete(index)}>
-                  完了
-                </button>
-                {/* イベント関数に引数を渡す時はアロー関数う経由にしないと即時実行される */}
-                <button className="" onClick={() => onClickDelete(index)}>
-                  削除
-                </button>
-              </div>
-            );
-          })}
-        </ul>
-      </div>
-      <div className="complete-area">
-        <p className="title">完了のTODO</p>
-        <ul className="">
-          {completeTodos.map((todo, index) => {
-            return (
-              // 一番外の要素にkeyをつける
-              <div key={todo} className="list-row">
-                <li className="">{todo}</li>
-                <button className="" onClick={() => onClickBack(index)}>
-                  戻す
-                </button>
-              </div>
-            );
-          })}
-        </ul>
-      </div>
+      <InputTodo
+        todoText={todoText}
+        onChange={onChangeTodoText}
+        onClick={onClickAdd}
+      />
+      <IncompleteTodos
+        todos={incompleteTodos}
+        onClickComplete={onClickComplete}
+        onClickDelete={onClickDelete}
+      />
+
+
     </>
   );
 };
